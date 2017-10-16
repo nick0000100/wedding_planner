@@ -1,0 +1,13 @@
+@{
+    ViewData["Header"] = $"{@ViewBag.Wedding.WedderOne.FirstName} and {@ViewBag.Wedding.WedderTwo.FirstName}'s Wedding";
+}
+@Html.Partial("_HeaderPartial")
+
+<h3>Date: @ViewBag.Wedding.Date.ToString("MMM dd, yyyy")</h3>
+<h3>Guests:</h3>
+<div class="guests">
+    @foreach(var guest in @ViewBag.Wedding.Guests)
+    {
+        <p>@guest.User.FirstName @guest.User.LastName</p>
+    }
+</div>

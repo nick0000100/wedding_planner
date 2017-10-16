@@ -1,0 +1,21 @@
+input, textarea {
+    display: block;
+    margin-bottom: 1em;
+}
+form {
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+}
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+h1 {
+    display: inline-block;
+}
+
+.guests {
+    padding-left: 10px;
+}

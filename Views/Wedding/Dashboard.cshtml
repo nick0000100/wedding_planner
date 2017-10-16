@@ -1,0 +1,38 @@
+@{
+    ViewData["Header"] = "Welcome to the Wedding Planner";
+}
+@Html.Partial("_HeaderPartial")
+
+<table>
+    <tr>
+        <th>Wedding</th>
+        <th>Date</th>
+        <th>Guest</th>
+        <th>Action</th>
+    </tr>
+    @foreach(var wedding in @ViewBag.Weddings)
+    {
+        <tr>
+            <td><a href="/Wedding/@wedding.Id">@wedding.WedderOne.FirstName &amp; @wedding.WedderTwo.FirstName</a></td>
+            <td>@wedding.Date.ToString("MMM dd, yyyy")</td>
+            <td>@wedding.Guests.Count</td>
+            <td>
+            @{
+                if(@wedding.WedderOneId == @ViewBag.UserId || @wedding.WedderTwoId == @ViewBag.UserId)
+                {
+                    <a href="/delete/@wedding.Id">Delete</a>
+                }
+                else if(@ViewBag.Attending.Contains(@wedding.Id))
+                {
+                    <a href="/UnRsvp/@wedding.Id">Un-RSVP</a>
+                }
+                else
+                {
+                    <a href="/Rsvp/@wedding.Id">RSVP</a>
+                }
+            }
+            </td>
+        </tr>
+    }
+</table>
+<a href="/NewWedding"><button>New Wedding</button></a>

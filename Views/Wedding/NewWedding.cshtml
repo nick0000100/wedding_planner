@@ -1,0 +1,26 @@
+@{
+    ViewData["Header"] = "Plan Your Wedding";
+}
+@model wedding.Models.WeddingViewModel
+@Html.Partial("_HeaderPartial")
+
+@{
+    if(TempData["Error"] != null)
+    {
+        <p class="error">@TempData["Error"]</p>
+    }
+}
+
+<div asp-validation-summary="All" class="error"></div>
+
+<form asp-controller="Wedding" asp-action="CreateWedding" method="POST">
+    <label asp-for="WedderOneName"></label>
+    <input asp-for="WedderOneName">
+    <label asp-for="WedderTwoName"></label>
+    <input asp-for="WedderTwoName">
+    <label asp-for="Date"></label>
+    <input asp-for="Date">
+    <label asp-for="Address"></label>
+    <input asp-for="Address">
+    <input type="submit" value="Create">
+</form>

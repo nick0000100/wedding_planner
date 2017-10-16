@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Welcome!</h1>
+@{
+    if(TempData["LoginError"] != null)
+    {
+        <p class="error">@TempData["LoginError"]</p>
+    }
+}
+@Html.Partial("_RegisterPartial")
+@Html.Partial("_LoginPartial")
